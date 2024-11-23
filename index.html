@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slideshow</title>
+    <style>
+      .container {
+        width: fit-content;
+        margin: 50px auto;
+        position: relative;
+      }
+
+      .slide {
+        height: 400px;
+        width: 600px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .ico-action {
+        height: 30px;
+        position: absolute;
+        top: 40%;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .ico-prev {
+        left: 0;
+      }
+
+      .ico-prev:hover {
+        transform: scale(0.8) translateX(-10px);
+      }
+
+      .ico-next {
+        right: 0;
+      }
+
+      .ico-next:hover {
+        transform: scale(0.8) translateX(10px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/flower1.jpg" class="slide" id="slide" />
+
+      <img src="images/previous.jpg" class="ico-action ico-prev" onclick="prev()" />
+      <img src="images/next.jpg" class="ico-action ico-next" onclick="next()" />
+    </div>
+
+    <script>
+      const images = [
+        "images/flower1.jpg",
+        "images/flower2.jpg",
+        "images/flower3.jpg",
+        "images/flower4.jpg",
+        "images/flower5.jpg",
+        "images/flower6.jpg",
+        "images/flower7.jpg",
+        "images/flower8.jpg",
+      ];
+
+      let index = 0;
+      const slide = document.getElementById("slide");
+
+      function next() {
+        if (index < images.length - 1) {
+          index++;
+        } else {
+          index = 0;
+        }
+
+        slide.src = images[index];
+      }
+
+      function prev() {
+        if (index > 0) {
+          index--;
+        } else {
+          index = images.length - 1;
+        }
+
+        slide.src = images[index];
+      }
+    </script>
+  </body>
+</html>
